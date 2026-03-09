@@ -1,0 +1,38 @@
+﻿@import url("https://fonts.bunny.net/css?family=press-start-2p:400|vt323:400");
+@import url('https://fonts.bunny.net/css?family=Nunito');
+@import "tailwindcss";
+
+@theme {
+    --color-ink: #0f172a;
+    --color-stone: #d1d5db;
+    --color-grass: #3f8f4f;
+    --color-grass-dark: #2d6a3a;
+    --color-dirt: #7a5b3a;
+    --color-dirt-dark: #5f452c;
+    --color-brown-dark: #6b4e31;
+    --font-pixel: "Press Start 2P", "VT323", monospace;
+    --font-mono-ui: "VT323", monospace;
+    --font-nunito: "Nunito", sans-serif;
+}
+
+@layer utilities {
+    .container {
+        @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+    }
+}
+p {
+    @apply mb-0;
+}
+
+.btn-green {
+    @apply bg-grass text-white font-normal py-2 px-4 rounded-2xl hover:bg-grass-dark transition-colors duration-300 w-fit h-fit;
+}
+.btn-brown {
+    @apply bg-brown-dark text-white font-normal py-2 px-4 rounded-2xl hover:bg-brown-dark/90 transition-colors duration-300 w-fit h-fit;
+}
+.btn-red {
+    @apply bg-red-500 text-white font-normal py-2 px-4 rounded-2xl hover:bg-red-700 transition-colors duration-300 w-fit h-fit;
+}
+body {
+    @apply bg-white/95   text-ink font-nunito;
+}
