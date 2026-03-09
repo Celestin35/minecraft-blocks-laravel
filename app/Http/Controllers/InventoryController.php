@@ -12,7 +12,10 @@ class InventoryController extends Controller
     // Afficher la liste des inventaires de l'utilisateur
     public function index(Request $request)
     {
-        $inventories = Inventory::with('user')->orderBy('created_at', 'desc')->get();
+        $inventories = Inventory::with('user')
+            ->where('user_id', Auth::id())
+            ->orderBy('created_at', 'desc')
+            ->get();
         return view('inventories.list', compact('inventories'));
     }
 

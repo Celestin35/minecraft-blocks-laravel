@@ -43,8 +43,9 @@
                             <span class="text-sm font-semibold text-ink">x{{ $block->pivot->quantity }}</span>
                             <span
                                 class="font-pixel text-sm uppercase tracking-wide text-ink">{{ $block->block_name }}</span>
-                            <form method="POST" action="{{ route('inventories.blocks.update', [$inventory, $block]) }}"
-                                class="ml-auto flex items-center gap-2">
+                            <div class="ml-auto flex items-center gap-2">
+                                <form method="POST" action="{{ route('inventories.blocks.update', [$inventory, $block]) }}"
+                                    class="flex items-center gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <input type="number" name="quantity" min="1" value="{{ $block->pivot->quantity }}"
@@ -53,7 +54,16 @@
                                     class="rounded-md border border-stone px-3 py-1 text-xs text-ink hover:bg-stone/60 transition-colors">
                                     Modifier
                                 </button>
-                            </form>
+                                </form>
+                                <form method="POST" action="{{ route('inventories.blocks.remove', [$inventory, $block]) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="rounded-md border border-red-400 px-3 py-1 text-xs text-red-700 hover:bg-red-50 transition-colors">
+                                        Supprimer
+                                    </button>
+                                </form>
+                            </div>
                         </li>
                     @endforeach
                 </ul>

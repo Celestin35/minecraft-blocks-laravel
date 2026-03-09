@@ -6,17 +6,32 @@ use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
-    /** 
-    * TODO : List of test that should be implemented
-    * - Un utilisateur peut créer son compte
-    * - Un utilisateur peut se connecter
-    * - Un utilisateur peut acceder aux blocs même sans être connecté
-    * - Un utilisateur peut acceder au détail d'un bloc
-    * - Un utilisatuer peut filter les blocs
-    * - Un utilisateur peut accéder à ses inventaires s'il est connecté
-    * - Un utilisateur peut créer, modifier et supprimer un inventaire
-    * - Un utilisatuer peut ajouter ou supprimer des blocs à son inventaire
-    * - Un utilisateur peut modifier la quantité d'un bloc sans son inventaire
-    * - Un utilisateur peut 
-*/
+    /**
+     * TODO: List of tests that should be implemented
+     * - Un utilisateur peut creer son compte
+     * - Un utilisateur peut se connecter
+     * - Un utilisateur peut se deconnecter
+     * - Un utilisateur peut supprimer son compte
+     * - Un utilisateur non connecte peut lister les blocs
+     * - Un utilisateur non connecte peut filtrer les blocs (au moins par type)
+     * - Un utilisateur non connecte peut voir le detail d'un bloc
+     * - Un utilisateur connecte peut ajouter un bloc a un inventaire existant depuis la fiche bloc
+     * - Un utilisateur connecte peut creer un bloc
+     * - Un utilisateur connecte peut modifier un bloc
+     * - Un utilisateur connecte peut supprimer un bloc
+     * - Un utilisateur connecte peut creer un type de bloc
+     * - Un utilisateur connecte peut voir un type de bloc
+     * - Un utilisateur connecte peut modifier un type de bloc
+     * - Un utilisateur connecte peut supprimer un type de bloc
+     * - Validation des attributs d'un bloc (creation + modification)
+     * - Un utilisateur connecte peut acceder a ses inventaires
+     * - Un utilisateur connecte peut creer un inventaire
+     * - Un utilisateur connecte peut voir un inventaire
+     * - Un utilisateur connecte peut renommer un inventaire
+     * - Un utilisateur connecte peut supprimer un inventaire
+     * - Un utilisateur connecte peut ajouter un bloc a un inventaire avec une quantite
+     * - Un utilisateur connecte peut modifier la quantite d'un bloc dans un inventaire
+     * - Un utilisateur connecte peut retirer un bloc d'un inventaire
+     * - Un utilisateur ne peut pas voir ou modifier les inventaires d'un autre utilisateur
+     */
 }

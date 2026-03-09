@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\InventoryController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 Route::resource('block', BlockController::class)->only(['index', 'show']);
 Auth::routes();
@@ -23,4 +23,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('inventories/{inventory}/blocks/{block}', [InventoryController::class, 'removeBlock'])->name('inventories.blocks.remove');
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', function () {
+    return redirect()->route('block.index');
+})->name('home');

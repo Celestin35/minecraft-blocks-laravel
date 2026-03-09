@@ -7,6 +7,59 @@ use App\Models\Block;
 
 class BlockController extends Controller
 {
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'file_name' => 'required|string|max:255',
+            'block_name' => 'required|string|max:255',
+            'variant' => 'nullable|string|max:255',
+            'avg_color_srgb' => 'nullable|string|max:255',
+            'avg_color_linear' => 'nullable|string|max:255',
+            'category' => 'nullable|string|max:255',
+            'family' => 'nullable|string|max:255',
+            'material' => 'nullable|string|max:255',
+            'is_transparent' => 'boolean',
+            'is_solid' => 'boolean',
+            'detail_form' => 'nullable|string|max:255',
+            'detail_flammable' => 'boolean',
+            'detail_interactive' => 'boolean',
+        ]);
+
+        $block = Block::create($validated);
+
+        return redirect()->route('block.show', $block);
+    }
+
+    public function update(Request $request, Block $block)
+    {
+        $validated = $request->validate([
+            'file_name' => 'sometimes|string|max:255',
+            'block_name' => 'sometimes|string|max:255',
+            'variant' => 'nullable|string|max:255',
+            'avg_color_srgb' => 'nullable|string|max:255',
+            'avg_color_linear' => 'nullable|string|max:255',
+            'category' => 'nullable|string|max:255',
+            'family' => 'nullable|string|max:255',
+            'material' => 'nullable|string|max:255',
+            'is_transparent' => 'boolean',
+            'is_solid' => 'boolean',
+            'detail_form' => 'nullable|string|max:255',
+            'detail_flammable' => 'boolean',
+            'detail_interactive' => 'boolean',
+        ]);
+
+        $block->update($validated);
+
+        return redirect()->route('block.show', $block);
+    }
+
+    public function destroy(Block $block)
+    {
+        $block->delete();
+
+        return redirect()->route('block.index');
+    }
+
     public function index(Request $request)
     {
         $query = Block::query();
