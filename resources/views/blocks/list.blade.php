@@ -3,7 +3,7 @@
 @section('content')
 <div class="mx-auto container py-8">
     <h1 class="text-lg font-pixel uppercase tracking-wider text-ink">Blocs minecraft</h1>
-    <p class="mt-1 text-sm text-slate-600">Tous les blocs pour Erwan</p>
+    <p class="mt-1 text-sm text-slate-600">Tous les blocs pour Erwann</p>
     <form method="GET" action="{{ route('block.index') }}" class="flex flex-col sm:flex-row items-left mt-4 gap-2 sm:gap-4">
         <p class="font-semibold text-lg">Filtrer par catégorie ou famille</p>
 <input
