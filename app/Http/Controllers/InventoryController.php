@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Inventory;
 use App\Models\Block;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
 class InventoryController extends Controller
 {
@@ -23,7 +24,7 @@ class InventoryController extends Controller
     public function show(Request $request, Inventory $inventory)
     {
         if ($inventory->user_id !== Auth::id()) {
-            abort(403);
+            abort(Response::HTTP_FORBIDDEN);
         }
         $inventory->load('user', 'blocks');
         $inventoryBlocks = $inventory->blocks;
@@ -38,7 +39,7 @@ class InventoryController extends Controller
     public function delete(Inventory $inventory)
     {
         if ($inventory->user_id !== Auth::id()) {
-            abort(403);
+            abort(Response::HTTP_FORBIDDEN);
         }
         $inventory->delete();
         return redirect()->route('inventories.index')->with('success', 'Inventory deleted successfully.');
@@ -66,7 +67,7 @@ class InventoryController extends Controller
     public function addBlock(Request $request, Inventory $inventory)
     {
         if ($inventory->user_id !== Auth::id()) {
-            abort(403);
+            abort(Response::HTTP_FORBIDDEN);
         }
         $request->validate([
             'block_id' => 'required|exists:blocks,id',
@@ -92,7 +93,7 @@ class InventoryController extends Controller
     public function updateBlock(Request $request, Inventory $inventory, Block $block)
     {
         if ($inventory->user_id !== Auth::id()) {
-            abort(403);
+            abort(Response::HTTP_FORBIDDEN);
         }
         $request->validate([
             'quantity' => 'required|integer|min:1',
@@ -107,7 +108,7 @@ class InventoryController extends Controller
     public function removeBlock(Inventory $inventory, Block $block)
     {
         if ($inventory->user_id !== Auth::id()) {
-            abort(403);
+            abort(Response::HTTP_FORBIDDEN);
         }
 
         $inventory->blocks()->detach($block->id);
